@@ -102,7 +102,7 @@ def walk(safe):
 	return extra_apples
 	
 	
-set_world_size(16)
+#set_world_size(16)
 change_hat(Hats.Dinosaur_Hat)
 next_apple = measure()
 fails = 0

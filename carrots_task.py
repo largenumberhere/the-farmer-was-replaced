@@ -20,7 +20,7 @@ def new(min_x, min_y, max_x, max_y):
 	
 
 	def main():
-		mover.move_to(0,0)
+		mover.move_to(_min_x,_min_y)
 		
 		dir = North
 		
@@ -42,7 +42,7 @@ def new(min_x, min_y, max_x, max_y):
 				
 				dir = North
 			if get_pos_x() >= _max_x-1 and get_pos_y() >= _max_y-1:
-				mover.move_to(0,0)
+				mover.move_to(_min_x,_min_y)
 				dir = North
 	return (main)
 

@@ -119,7 +119,7 @@ def main():
 	
 	harvest()
 	dir = East
-	set_world_size(22)	
+	#set_world_size(22)	
 	change_hat(Hats.Carrot_Hat)
 	change_hat(Hats.Dinosaur_Hat)
 	while True:

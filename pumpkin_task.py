@@ -40,8 +40,9 @@ def new():
 					if entity_type == Entities.Dead_Pumpkin:
 						bad_count += 1
 					if entity_type != Entities.Pumpkin:
+						if can_harvest():
+							harvest()
 						plant(Entities.Pumpkin)			
-					
 					
 					if j != width_y-1:
 						move2(facing)
