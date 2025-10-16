@@ -101,37 +101,37 @@ while True:
 	# sort columns
 	for col in range(max_pos):
 		# plant the column
-        while get_pos_y() < max_pos:
+		while get_pos_y() < max_pos:
 			ensure_tilled()
 			ensure_planted()
 			if get_pos_y() != max_pos-1:
-                sort_v()
+				sort_v()
 				move(North)
 			else:
 				break
 		
-        # sort the column
+		# sort the column
 		bad = True
 		while bad:
 			bad = False
 			while get_pos_y() >0:
 				actioned = sort_v()
-                if actioned:
-                    bad = True
+				if actioned:
+					bad = True
 					
 				move(South)
 			if not bad:
-                break
-            
-            bad = False
+				break
+			
+			bad = False
 			while get_pos_y() < max_pos-1:
-                actioned = sort_v()
-                if actioned:
-                    bad = True
-                
-                move(North)
-                
-                
+				actioned = sort_v()
+				if actioned:
+					bad = True
+				
+				move(North)
+				
+				
 			
 		move_y_start()
 		move(East)
@@ -139,33 +139,33 @@ while True:
 	# sort rows
 	for row in range(max_pos):
 		while get_pos_x() >0:
-            move(West)
-            sort_h()
+			move(West)
+			sort_h()
 		bad = True
 		while bad:
 			bad = False
 			
 			for col in range(max_pos):
-                actioned = sort_h()
-                if actioned:
-                    bad = True
-                
-                if col != max_pos-1:
-                    move(East)
-                
-            if not bad:
-                break
-            
-            for col in range(max_pos):
-                actioned = sort_h()
-                if actioned:
-                    bad = True
-                
-                if col != max_pos-1:
-                    move(West)
-            
+				actioned = sort_h()
+				if actioned:
+					bad = True
+				
+				if col != max_pos-1:
+					move(East)
+				
+			if not bad:
+				break
+			
+			for col in range(max_pos):
+				actioned = sort_h()
+				if actioned:
+					bad = True
+				
+				if col != max_pos-1:
+					move(West)
+			
 		move(North)
-        
+		
 	move_x_start()
 	move_y_start()
 	harvest()
