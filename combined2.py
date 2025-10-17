@@ -1,6 +1,7 @@
 import pumpkin_task
 import basics_task
 import carrots_task
+import hay_task
 
 def task1():
 	while True:
@@ -20,6 +21,7 @@ tasks = [
 	basics_task.make_drone(0, 17, 8, 32),
 	basics_task.make_drone(8, 17, 16, 32),
 	basics_task.make_drone(16, 17, 24, 32),
+	hay_task.make_drone(24,17,28,21)
 ]
 for i in range(len(tasks)):
 	drone = spawn_drone(tasks[i])

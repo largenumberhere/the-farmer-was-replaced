@@ -1,7 +1,7 @@
 import mover
 
 
-set_world_size(16)
+set_world_size(18)
 max_pos = get_world_size()
 
 op_dir = {North:South, South:North, East:West, West:East}

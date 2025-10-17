@@ -35,7 +35,7 @@ def new(min_x, min_y, max_x, max_y):
 			if entity != Entities.Bush:
 				plant(Entities.Bush)
 			if can_harvest():
-				use_item(Items.Weird_Substance, 1)
+				use_item(Items.Weird_Substance)
 				harvest()
 				plant(Entities.Bush)
 		elif (y >= _max_y-4):
