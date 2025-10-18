@@ -1,7 +1,7 @@
 import mover
 
 
-set_world_size(18)
+#set_world_size(18)
 max_pos = get_world_size()
 
 op_dir = {North:South, South:North, East:West, West:East}
@@ -96,76 +96,81 @@ def move_x_end():
 	while get_pos_x() < get_world_size()-1:
 		move(East)
 
-mover.move_to(0,0)
-while True:
-	# sort columns
-	for col in range(max_pos):
-		# plant the column
-		while get_pos_y() < max_pos:
-			ensure_tilled()
-			ensure_planted()
-			if get_pos_y() != max_pos-1:
-				sort_v()
-				move(North)
-			else:
-				break
-		
-		# sort the column
-		bad = True
-		while bad:
-			bad = False
-			while get_pos_y() >0:
-				actioned = sort_v()
-				if actioned:
-					bad = True
+def main():
+	mover.move_to(0,0)
+	while True:
+		# sort columns
+		for col in range(max_pos):
+			# plant the column
+			while get_pos_y() < max_pos:
+				ensure_tilled()
+				ensure_planted()
+				if get_pos_y() != max_pos-1:
+					sort_v()
+					move(North)
+				else:
+					break
+			
+			# sort the column
+			bad = True
+			while bad:
+				bad = False
+				while get_pos_y() >0:
+					actioned = sort_v()
+					if actioned:
+						bad = True
+						
+					move(South)
+				if not bad:
+					break
+				
+				bad = False
+				while get_pos_y() < max_pos-1:
+					actioned = sort_v()
+					if actioned:
+						bad = True
 					
-				move(South)
-			if not bad:
-				break
+					move(North)
+					
+					
+				
+			move_y_start()
+			move(East)
 			
-			bad = False
-			while get_pos_y() < max_pos-1:
-				actioned = sort_v()
-				if actioned:
-					bad = True
+		# sort rows
+		for row in range(max_pos):
+			while get_pos_x() >0:
+				move(West)
+				sort_h()
+			bad = True
+			while bad:
+				bad = False
 				
-				move(North)
+				for col in range(max_pos):
+					actioned = sort_h()
+					if actioned:
+						bad = True
+					
+					if col != max_pos-1:
+						move(East)
+					
+				if not bad:
+					break
 				
+				for col in range(max_pos):
+					actioned = sort_h()
+					if actioned:
+						bad = True
+					
+					if col != max_pos-1:
+						move(West)
 				
+			move(North)
 			
+		move_x_start()
 		move_y_start()
-		move(East)
-		
-	# sort rows
-	for row in range(max_pos):
-		while get_pos_x() >0:
-			move(West)
-			sort_h()
-		bad = True
-		while bad:
-			bad = False
-			
-			for col in range(max_pos):
-				actioned = sort_h()
-				if actioned:
-					bad = True
-				
-				if col != max_pos-1:
-					move(East)
-				
-			if not bad:
-				break
-			
-			for col in range(max_pos):
-				actioned = sort_h()
-				if actioned:
-					bad = True
-				
-				if col != max_pos-1:
-					move(West)
-			
-		move(North)
-		
-	move_x_start()
-	move_y_start()
-	harvest()
+		harvest()
+		if num_items(Items.Cactus) >= 1000000:
+			return
+
+main()
