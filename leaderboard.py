@@ -42,6 +42,10 @@ all_unlocks = {
 
 
 	
-res = simulate("cactus1", all_unlocks, {Items.Pumpkin: 10**10}, {}, 0 , 1000)
-print(res)
-quick_print(res)
+#res = simulate("cactus1", all_unlocks, {Items.Pumpkin: 10**10}, {}, 0 , 1000)
+#print(res)
+#quick_print(res)
+unlocks = {Unlocks.Expand, Unlocks.Plant, Unlocks.Dinosaurs, Unlocks.Mazes, Unlocks.Sunflowers, Unlocks.Cactus, Unlocks.Megafarm}
+count = simulate("maze2", unlocks, {Items.Weird_Substance: 10**9}, {}, 0, 1000) #303
+print(count)
+
